@@ -1,0 +1,15 @@
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\bin\Debug\net7.0\screen_audio.exe
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\bin\Debug\net7.0\screen_audio.deps.json
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\bin\Debug\net7.0\screen_audio.runtimeconfig.json
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\bin\Debug\net7.0\screen_audio.dll
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\bin\Debug\net7.0\screen_audio.pdb
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\screen_audio.csproj.AssemblyReference.cache
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\screen_audio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\screen_audio.AssemblyInfoInputs.cache
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\screen_audio.AssemblyInfo.cs
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\screen_audio.csproj.CoreCompileInputs.cache
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\screen_audio.dll
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\refint\screen_audio.dll
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\screen_audio.pdb
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\screen_audio.genruntimeconfig.cache
+C:\Users\limaj\source\repos\csharp-fundamentos\screen_audio\screen_audio\obj\Debug\net7.0\ref\screen_audio.dll
