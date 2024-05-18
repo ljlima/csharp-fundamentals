@@ -1,149 +1,41 @@
-﻿Dictionary<String,List<int>> bandas = new Dictionary<string, List<int>>();
-void ExibirMensagemBoasVindas()
-{
-    string mensagemBoasVindas = "Bem vindo ao Screen Audio!";
-    //verbatim literal ; @" string desejada"  
-    //o verbatim exibe a mensagem no código para facilitar a interpretação por outro programador
+﻿Banda banda = new Banda("banda X");
 
-    //Logotipo
-    Console.WriteLine(@"
+//Using initializers
+Musica musica = new Musica(banda, "faixa1"){
+    Duracao = 180,
+    Disponivel = true
+};
 
-░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
-██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
-╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
-░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
-██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
-╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
-");
-    Console.WriteLine(mensagemBoasVindas);
-}
-
-void ExibirMenuOpcoes()
-{
-    ExibirMensagemBoasVindas();
-    // "\n" dá o espaço
-    Console.WriteLine("\nDigite 1 para registrar uma banda");
-    Console.WriteLine("Digite 2 para exibir todas as bandas");
-    Console.WriteLine("Digite 3 para avaliar uma banda");
-    Console.WriteLine("Digite 4 para ver a média de uma banda");
-    Console.WriteLine("Digite -1 para sair");
-
-    Console.WriteLine("\nEscolha uma opção: ");
-    //Exclamação garante que não será retornado nulo
-    string opcaoEscolhida = Console.ReadLine()!; // "!" garante que não será retornado null
-    int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida); // converte para inteiro
-    switch (opcaoEscolhidaNumerica)
-    {
-        case 1:  RegistrarBanda();
-            break;
-        case 2: VisualizarBanda();
-            break;
-        case 3: AvaliarBanda();
-            break;
-        case 4: VerMediaBanda();
-            break;
-
-        case -1:
-            Console.WriteLine("tchau :)");
-            break;
-        default:
-            Console.WriteLine("Opção inválida!");
-            break;
-    }
-}
-
-void RegistrarBanda()
-{
-    Console.Clear();
-    System.Console.WriteLine("Digite o nome da banda que deseja registrar: ");
-    string nomeBanda = Console.ReadLine()!;
-    try
-    {
-        bandas.Add(nomeBanda.ToUpper(),new List<int>());
-        System.Console.WriteLine($"Banda {nomeBanda} foi adicionada com sucesso!");
-        Thread.Sleep(2000);
-        Console.Clear();
-        ExibirMenuOpcoes();
-    }
-    catch (System.Exception)
-    {
-
-        throw;
-    }
-    
-}
-
-void VisualizarBanda()
-{
-    Console.Clear();
-    System.Console.WriteLine("Foram registradas até o momento as bandas: ");
-    foreach (var banda in bandas.Keys)
-        {
-            System.Console.WriteLine(banda);
-        }
-    Thread.Sleep(2000);
+Album album =new Album("new");
 
 
-    Console.Clear();
-    ExibirMenuOpcoes();
+musica.ExibirFihaTecnica();
 
-}
+Podcast podcast = new Podcast("ENGTI", "Joaozinho");
+Episodio ep1 = new Episodio(1, "teste dados", 30);
+ep1.AdicionarConvidado("julio");
+ep1.AdicionarConvidado("andre");
 
-void AvaliarBanda()
-{
-    Console.Clear();
-    System.Console.WriteLine("Digite o nome da banda que deseja avaliar:");
-    try
-    {
-        string bandaAvaliada = Console.ReadLine()!;
-        bandaAvaliada = bandaAvaliada.ToUpper();
+Episodio ep2 = new Episodio(2, "teste sif", 30);
+ep2.AdicionarConvidado("Ana");
+ep2.AdicionarConvidado("Jose");
+Episodio ep3 = new Episodio(3, "teste b", 30);
+ep3.AdicionarConvidado("Vitor");
+ep3.AdicionarConvidado("Carlos");
+Episodio ep4 = new Episodio(4, "teste d", 30);
+ep4.AdicionarConvidado("Amanda");
+ep4.AdicionarConvidado("julia");
+Episodio ep5 = new Episodio(5, "teste a", 60);
+ep5.AdicionarConvidado("Carlos");
+ep5.AdicionarConvidado("Amanda");
 
-        if (bandas.ContainsKey(bandaAvaliada))
-        {
-            System.Console.WriteLine("Qual a nota dada a banda?");
-            int nota = int.Parse(Console.ReadLine()!);
-            bandas[bandaAvaliada].Add(nota);
-            System.Console.WriteLine($"Nota {nota} atribuída a banda {bandaAvaliada.ToUpper()} com sucesso!");
-            Thread.Sleep(2000);
-        }
-        else
-        {
-            System.Console.WriteLine("Não foi possível encontrar a banda digitada!!");
-            System.Console.WriteLine("Pressione uma tecla para voltar no menu inicial: ");
-            Console.ReadKey();
+podcast.AdicionarEpisodio(ep1);
+podcast.AdicionarEpisodio(ep2);
+podcast.AdicionarEpisodio(ep3);
+podcast.AdicionarEpisodio(ep4);
+podcast.AdicionarEpisodio(ep5);
 
-        }
-        Console.Clear();
-        ExibirMenuOpcoes();
-    }
-    catch (System.Exception)
-    {
-        
-        throw;
-    }  
-}
 
-void VerMediaBanda()
-{
-    Console.Clear();
-    System.Console.WriteLine("Digite o nome da banda que deseja avaliar:");
-    string bandaAvaliada = Console.ReadLine()!;
-    bandaAvaliada = bandaAvaliada.ToUpper();
-    if (bandas.ContainsKey(bandaAvaliada))
-    {
-        List<int> notasBanda = bandas[bandaAvaliada];
-        System.Console.WriteLine($"A média de notas para a banda {bandaAvaliada} é {notasBanda.Average()}");
-        Thread.Sleep(2000);
-    }
-    else
-    {
-        System.Console.WriteLine("Não foi possível encontrar a banda digitada!!");
-        System.Console.WriteLine("Pressione uma tecla para voltar no menu inicial: ");
-        Console.ReadKey();
 
-    }
-    Console.Clear();
-    ExibirMenuOpcoes();
-}
 
-ExibirMenuOpcoes();
+podcast.ExibirDetalhes();
