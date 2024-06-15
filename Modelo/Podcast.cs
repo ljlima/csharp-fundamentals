@@ -1,3 +1,4 @@
+namespace APPOO.Modelos;
 class Podcast
 {
     private List<Episodio> episodios = new List<Episodio>();

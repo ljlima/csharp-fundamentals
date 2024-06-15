@@ -1,3 +1,4 @@
+namespace APPOO.Modelos;
 class Musica
 {
     public Musica(Banda artista, string nome)
@@ -10,9 +11,8 @@ class Musica
     public Banda Artista { get; set; }
     public int Duracao { get; set; }
     public bool Disponivel { get; set; }
-
-
-    public void ExibirFihaTecnica()
+public string DescricaoResumida => $"A música {Nome} pertence à banda {Artista}";
+   public void ExibirFihaTecnica()
     {
         System.Console.WriteLine($"Musica {Nome}");
         System.Console.WriteLine($"Artista {Artista}");

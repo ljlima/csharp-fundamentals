@@ -1,26 +1,38 @@
-class Banda
+namespace APPOO.Modelos;
+internal class Banda : IAvaliavel
 {
-    private List<Album> albums = new List<Album>();
+    private List<Album> albuns = new List<Album>();
+    private List<Avaliacao> notas = new List<Avaliacao>();
     public Banda(string nome)
     {
         Nome = nome;
     }
     public String Nome { get; set; }
-
-    public void ExibirDadosBanda()
+    public double Media 
+    { 
+        get
+        {
+            if(notas.Count() == 0) return 0;
+            else return notas.Average(notaBanda => notaBanda.Nota);
+        } 
+    }
+    public string? Resumo { get; set; }
+    public List<Album> Albuns => albuns;
+    public void AdicionarAlbum(Album album)
     {
-        System.Console.WriteLine($"Banda {Nome}");
-        if(albums?.Any() == true ) 
+        albuns.Add(album);
+    }
+    public void AdicionarNota (Avaliacao nota)
+    {
+        notas.Add(nota);
+    }
+
+    public void ExibirDiscografia()
+    {
+        System.Console.WriteLine($"Discografia da banda {Nome}");
+        foreach (Album album in albuns)
         {
-            System.Console.WriteLine("Albuns: ");
-            foreach (var album in albums)
-            {
-                System.Console.WriteLine(album);
-            }
-        }
-        else
-        {
-            System.Console.WriteLine("Ainda não foram encontrados albums cadastrados! Cadastre um albúm!");
+            System.Console.WriteLine($"Album: {album.Nome} - Duração: {album.DuracaoTotal}");
         }
     }
 }

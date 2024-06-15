@@ -1,3 +1,4 @@
+namespace APPOO.Modelos;
 class Episodio
 {
     List<string> convidados = new List<string>();
