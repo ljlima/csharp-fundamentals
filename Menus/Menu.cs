@@ -1,5 +1,5 @@
 namespace APPOO.Menu;
-
+using APPOO.Modelos;
 internal class Menu
 {
     public void ExibirTituloMenu(string titulo)

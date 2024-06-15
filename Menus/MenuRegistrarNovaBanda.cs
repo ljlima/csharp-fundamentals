@@ -1,5 +1,7 @@
-using APPOO.Menu;
-using OPENAI_API;
+namespace APPOO.Menu;
+using APPOO.Modelos;
+using OpenAI_API;
+
 internal class MenuRegistrarNovaBanda : Menu
 {
     public override void Executar(Dictionary<string, Banda> bandasRegistradas)
@@ -11,12 +13,13 @@ internal class MenuRegistrarNovaBanda : Menu
         Banda banda = new Banda(nomeBanda);
         bandasRegistradas.Add(nomeBanda,banda);
 
-        string api_key = "";
-        var client = new OpenAiApi(api_key);
-        var chat = client.Chat.CreateConversation();
-        chat.AppendSystemMessage($"Resuma a banda {nomeBanda} em 1 parágrafo. Adote um estilo informal");
-        var resposta = chat.GetResponseFromChatBotAsync().GetAwaiter().GetResult();
-        banda.Resumo = resposta;
+        // string api_key = "";
+        // OpenAIAPI api = new OpenAIAPI(api_key);
+        // //var chat = client.Chat.CreateConversation();
+        // var chat = api.Chat.CreateConversation();
+        // chat.AppendSystemMessage($"Resuma a banda {nomeBanda} em 1 parágrafo. Adote um estilo informal");
+        // var resposta = chat.GetResponseFromChatbotAsync().GetAwaiter().GetResult();
+        // banda.Resumo = resposta;
 
         Console.WriteLine($"A banda {nomeBanda} foi registrada com sucesso!");
         Console.WriteLine("Digite uma tecla para voltar ao menu principal");
