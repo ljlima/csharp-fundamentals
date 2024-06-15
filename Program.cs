@@ -1,41 +1,81 @@
-﻿Banda banda = new Banda("banda X");
-
-//Using initializers
-Musica musica = new Musica(banda, "faixa1"){
-    Duracao = 180,
-    Disponivel = true
-};
-
-Album album =new Album("new");
+﻿using APPOO.Menu;
+using APPOO.Modelos;
+//https://www.nuget.org/packages/OpenAI/#chat-conversations
 
 
-musica.ExibirFihaTecnica();
+Dictionary<int, Menu> opcoes = new Dictionary<int, Menu>();
 
-Podcast podcast = new Podcast("ENGTI", "Joaozinho");
-Episodio ep1 = new Episodio(1, "teste dados", 30);
-ep1.AdicionarConvidado("julio");
-ep1.AdicionarConvidado("andre");
+opcoes.Add(1, new MenuRegistrarNovaBanda());
+opcoes.Add(2, new MenuRegistrarAlbum());
+opcoes.Add(3, new MenuExibirDetalhes());
+opcoes.Add(4, new MenuMostrarBandas());
+opcoes.Add(5, new MenuAvaliarBanda());
+opcoes.Add(6, new MenuAvaliarAlbum());
+opcoes.Add(-1, new MenuSair());
 
-Episodio ep2 = new Episodio(2, "teste sif", 30);
-ep2.AdicionarConvidado("Ana");
-ep2.AdicionarConvidado("Jose");
-Episodio ep3 = new Episodio(3, "teste b", 30);
-ep3.AdicionarConvidado("Vitor");
-ep3.AdicionarConvidado("Carlos");
-Episodio ep4 = new Episodio(4, "teste d", 30);
-ep4.AdicionarConvidado("Amanda");
-ep4.AdicionarConvidado("julia");
-Episodio ep5 = new Episodio(5, "teste a", 60);
-ep5.AdicionarConvidado("Carlos");
-ep5.AdicionarConvidado("Amanda");
+Dictionary<string,Banda> bandasRegistradas = new Dictionary<string, Banda>();
 
-podcast.AdicionarEpisodio(ep1);
-podcast.AdicionarEpisodio(ep2);
-podcast.AdicionarEpisodio(ep3);
-podcast.AdicionarEpisodio(ep4);
-podcast.AdicionarEpisodio(ep5);
+Banda banda1 = new Banda("Banda Antiga");
+Banda banda2 = new Banda("Banda Nova");
 
 
+bandasRegistradas.Add(banda1.Nome,banda1);
+bandasRegistradas.Add(banda2.Nome,banda2);
 
 
-podcast.ExibirDetalhes();
+void ExibirMensagemBoasVindas()
+{
+    Console.Clear();
+    string mensagemBoasVindas = "Bem vindo ao Screen Audio!";
+    //verbatim literal ; @" string desejada"  
+    //o verbatim exibe a mensagem no código para facilitar a interpretação por outro programador
+
+    //Logotipo
+    Console.WriteLine(@"
+
+░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
+██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
+╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
+░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
+██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
+");
+    Console.WriteLine(mensagemBoasVindas);
+}
+
+void ExibirMenuOpcoes()
+{
+    int opcaoEscolhidaNumerica = 0;
+    do
+    {
+        ExibirMensagemBoasVindas();
+    // "\n" dá o espaço
+    Console.WriteLine("\nDigite 1 para Registrar uma banda");
+    Console.WriteLine("Digite 2 para Registrar um álbum");
+    Console.WriteLine("Digite 3 para Exibir detalhes de uma banda");
+    Console.WriteLine("Digite 4 para Ver as bandas registradas");
+    Console.WriteLine("Digite 5 para Avaliar uma banda registrada");
+    Console.WriteLine("Digite 6 para  Avaliar um Álbum de uma banda  registrada");
+    Console.WriteLine("Digite -1 para sair");
+
+    Console.WriteLine("\nEscolha uma opção: ");
+    //Exclamação garante que não será retornado nulo
+    string opcaoEscolhida = Console.ReadLine()!; // "!" garante que não será retornado null
+    opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida); // converte para inteiro
+
+    if (opcoes.ContainsKey(opcaoEscolhidaNumerica))
+    {
+        Menu menuEscolhido = opcoes[opcaoEscolhidaNumerica];
+        menuEscolhido.Executar(bandasRegistradas);
+    }
+    else
+    {
+        System.Console.WriteLine("Opção Inválida!!!");
+    }
+
+    }
+    while(opcaoEscolhidaNumerica != -1);
+}
+
+
+ExibirMenuOpcoes();
