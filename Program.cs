@@ -14,7 +14,7 @@ using (HttpClient client = new HttpClient())
         //LinqFilter.ExibirTodosGeneros(musicas);
         //LinqOrder.ExibirListaArtistasOrdenada(musicas);
         ///LinqFilter.FiltrarArtistaPorGenero(musicas, "blues");
-        LinqFilter.FiltrarMusicaPorArtista(musicas, "U2");
+        //LinqFilter.FiltrarMusicaPorArtista(musicas, "U2");
 
 
         MusicasPreferidas musicasPreferidasJao = new MusicasPreferidas("jao");
@@ -24,10 +24,15 @@ using (HttpClient client = new HttpClient())
         musicasPreferidasJao.AdicionarMusicasPreferidas(musicas[11]);
         musicasPreferidasJao.AdicionarMusicasPreferidas(musicas[5]);
 
+
         musicasPreferidasJao.ExibirMusicasPreferidas();
         musicasPreferidasJao.CriarArquivoJson();
 
         musicasPreferidasJao.CriarArquivosTxt();
+
+        LinqFilter.FiltrarMusicaPorTonalidade(musicas, "C#");
+
+
     }
     catch (System.Exception e)
     {
